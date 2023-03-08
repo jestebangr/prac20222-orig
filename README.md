@@ -1,11 +1,11 @@
-# 🏫  UOC 2022/2023-1
+# 🏫  UOC 2022/2023-2
 
 - [Aula català](#📂-fitxers-per-la-pràctica)
 - [Aula castellano](#📂-archivos-para-la-práctica)
 
 ```bash
 |- db
-|. |- data.sql
+|  |- data.sql
 |- web
 |  |- app
 |  |- Dockerfile
