@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="{{url_for('static', filename='dist/main.js') }}"></script>
+  <link href="{{url_for('static',filename='dist/css/output.css')}}" rel="stylesheet">
+  <title>ARSO 2022-2</title>
+</head>
+
+<body>
+  <div id="app" class="flex flex-col h-screen items-center justify-center text-center bg-slate-800 text-gray-50 gap-4">
+  </div>
+  <template id="main">
+    <figure>
+      <img src="{{ url_for('static', filename='dist/logo_uoc.png') }}" class=" w-72 absolute top-4 left-4">
+    </figure>
+    <div
+      class="text-6xl font-semibold text-transparent pb-8 bg-gradient-to-r from-[#73EDFF] to-[#D6FAFF] bg-clip-text ">
+      ARSO 2022-2</div>
+    <div class="text-xl text-green-500">🥳 Congratulations ‼ the site work!! 🎉 👏 👏 </div>
+    <div v-if="users.length" class="shadow-md border-green-200 border-2 p-4 rounded-md text-gray-100">
+      Your database response is:
+      <div
+        class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-bold text-xl font-mono">
+        <ul class='p-4'>
+          <li><span class='text-white pr-2'>👤</span>[[ student]] </li>
+          <li><span class='text-white'>📅 </span> [[ created ]]</li>
+        </ul>
+      </div>
+      <db-table :users="users"></db-table>
+
+    </div>
+    <div v-else class="shadow-md bg-purple-800 p-4 rounded-md text-gray-100">
+      👉 Now you should configure the connection to the database.
+    </div>
+  </template>
+  <template id="tbl-data">
+    <section class="flex gap-4">
+      <user-card v-for="user in users" :user="user" :key="user.id"></user-card>
+    </section>
+
+  </template>
+  <template id="user-card">
+    <div
+      class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">[[ user.nombre]]</h5>
+      <p class="font-normal text-gray-700 dark:text-gray-400">
+      <ul>
+        <li>[[user.email]]</li>
+        <li>[[user.telefono]]</li>
+        <li>[[user.direccion]]</li>
+      </ul>
+      </p>
+      </>
+
+  </template>
+</body>
+
+</html>
